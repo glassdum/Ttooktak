@@ -1,0 +1,52 @@
+* {margin: 0; padding: 0; box-sizing: border-box;}
+li {list-style: none;}
+a {text-decoration: none;}
+
+/* .translateBg {
+    margin: 0 auto;
+} */
+
+.uploadBox {
+    border: 1px solid red;
+    width: 1091px;
+    margin: 126px auto 0;
+}
+.after {
+    width: 100vw;
+    height: 100vh;
+    background: rgba(51, 51, 51, 0.75);
+    position: fixed;
+    left: 0;
+    top: 0;
+}
+.after .uploadWindow {
+    width: 56%;
+    height: 56%;
+    background: #ECF5F5;
+}
+.before {
+    position: relative;
+}
+.before .playBox {
+    width: 985px;
+    height: 520px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 16px;
+}
+.before .playBox p {
+    font-size: 42px;
+    font-family: "Noto Sans KR";
+    color: #6B7072;
+}
+.before .uploadLayout {
+    position: absolute;
+    left: 0;
+    top: 0;
+}
+
+.fileSelect {
+    margin-top: 120px;
+}
