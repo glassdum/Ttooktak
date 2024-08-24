@@ -1,30 +1,48 @@
-import React, {useCallback, useState} from 'react'
-import {useDropzone} from 'react-dropzone'
-import './Translate.css'
+import React, { useState, useCallback } from 'react';
+import { useDropzone } from 'react-dropzone';
+import './Translate.css';
+import axios from 'axios';
 
 function Translate() {
-  const [showAfter, setShowAfter] = useState(false);
+  const [fileInfo, setFileInfo] = useState({ name: '', length: '', language: '' });
+  const [activeStep, setActiveStep] = useState(1);
+
   const onDrop = useCallback(acceptedFiles => {
-    // Do something with the files
-        console.log(acceptedFiles);
-        setShowAfter(true);
-  }, [])
-  const {getRootProps, getInputProps, isDragActive} = useDropzone({onDrop})
-  const handleButtonClick = () => {
-    // 파일 선택 버튼을 클릭했을 때 after 상태를 표시
-    setShowAfter(true);
-  };
+    const file = acceptedFiles[0];
+    if (file && file.type === 'video/mp4') {
+      console.log(file);
+      // 백엔드가 없으므로, axios를 사용해 모의 응답을 생성합니다.
+      axios.post('http://localhost:3000/translate', file).then(response => {
+        // 여기서는 가짜 데이터를 사용하고 있습니다.
+        setFileInfo({ name: file.name, length: '120 mins', language: 'Korean' });
+        setActiveStep(3); // 파일 업로드 후 단계 3으로 이동
+      }).catch(error => {
+        console.error('Error:', error);
+      });
+    }
+  }, []);
+
+  const { getRootProps, getInputProps, isDragActive } = useDropzone({
+    onDrop,
+    accept: 'video/mp4'
+  });
 
   return (
-    <div>
+    <div className='translateBody'>
       <div className="translateBg">
         <div {...getRootProps()} className="uploadBox">
-          <input {...getInputProps()} />
+          <input {...getInputProps()}  />
           {
-            isDragActive || showAfter ?
+            isDragActive ?
+            // isDragActive || showAfter ?
               <div className="after">
                 <div className="uploadWindow">
-                  after
+                  <div className="uploadGuide">
+                    <svg width="128" height="128" viewBox="0 0 128 128" fill="none">
+                      <path d="M31.1414 54.056C19.4 56.848 10.6667 67.4054 10.6667 80C10.6667 94.728 22.6054 106.667 37.3334 106.667C39.8587 106.667 42.304 106.315 44.6214 105.659M96.1467 54.056C107.888 56.848 116.619 67.4054 116.619 80C116.619 94.728 104.68 106.667 89.952 106.667C87.4267 106.667 84.9813 106.315 82.6667 105.659M96 53.3334C96 35.6614 81.672 21.3334 64 21.3334C46.328 21.3334 32 35.6614 32 53.3334M45.5067 74.3494L64 55.7974L83.0187 74.6667M64 101.333V65.232" stroke="#EB9E9D" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                    <p>원하는 영상을<br />업로드 해주세요.</p>
+                  </div>
                 </div>
               </div> :
               <div className="before">
@@ -61,8 +79,48 @@ function Translate() {
                 </svg>
               </div>
           }
-          <p>원하는 동영상, 음성 파일을 드래그하여 넣으세요!</p>
-          <button onClick={handleButtonClick} className="fileSelect">파일선택</button>
+        </div>
+        <div className={`no1 ${activeStep === 1 ? 'on' : ''}`}>
+          <div className="no1Box">
+            <p>원하는 동영상, 음성 파일을 드래그하여 넣으세요!</p>
+            <button className="fileSelect" onClick={() => document.querySelector('.uploadBox input').click()}>파일선택</button>
+          </div>
+        </div>
+        <div className="no2 on">
+          <div className="no2Box">
+            <p>뚝딱이가 영상의 자막을<br />생성합니다!</p>
+          </div>
+        </div>
+        <div className={`no3 ${activeStep === 3 ? 'on' : ''}`}>
+          <div className="no3Box">
+            <p>{fileInfo.name}</p>
+            <p>{fileInfo.length}</p>
+            <p>{fileInfo.language}</p>
+            <button className="uploadButton">번역시작</button>
+          </div>
+        </div>
+        <div className="no4">
+          <div className="no4Box">
+            <p>원하는 언어를<br />선택해 주세요</p>
+            <button className='en' id='en'>영어</button>
+            <button className='cn' id='cn'>중국어</button>
+            <button className='jp' id='jp'>일본어</button>
+            <button className='ru' id='ru'>러시아어</button>
+            <button className='sp' id='sp'>스페인어</button>
+          </div>
+        </div>
+        <div className="no5">
+          <div className="no5Box">
+            <p>다운로드 받을 포멧을 선택해 주세요</p>
+            <button className="formetSelet" id='txt'>.txt</button>
+            <button className="formetSelet" id='srt'>.srt</button>
+            <button className="formetSelet" id='csv'>.csv</button>
+          </div>
+        </div>
+        <div className="no6">
+          <div className="no6Box">
+            <p>뚝딱이가 영상의 자막을<br />생성합니다!</p>
+          </div>
         </div>
       </div>
     </div>
