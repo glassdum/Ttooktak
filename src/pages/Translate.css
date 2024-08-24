@@ -71,6 +71,15 @@ a {text-decoration: none;}
     left: 0;
     top: 0;
 }
+.translateBg>div>div button {
+    width: 200px;
+    height: 64px;
+    border: 2px solid #6B7072;
+    border-radius: 40px;
+    font-size: 24px;
+    cursor: pointer;
+    box-shadow: 2px 8px rgba(107, 112, 114, 0.5);
+}
 .no1, .no3, .no5 {
     margin: 96px 0 0;
     width: 1091px;
@@ -89,17 +98,10 @@ a {text-decoration: none;}
     font-family: "Noto Sans KR";
 }
 .no1 .fileSelect, .no3 .uploadButton {
-    width: 200px;
-    height: 64px;
     margin-top: 24px;
-    border-radius: 40px;
-    border: 2px solid #6B7072;
     background: #EDAE87;
-    font-size: 24px;
-    cursor: pointer;
-    box-shadow: 2px 8px rgba(107, 112, 114, 0.5);
 }
-.no2, .no4, .no6 {
+.no2, .no4 {
     width: 300px;
     position: absolute;
     top: 240px;
@@ -110,14 +112,7 @@ a {text-decoration: none;}
 }
 .no4 .no4Box button {
     display: block;
-    width: 200px;
-    height: 64px;
     margin-top: 24px;
-    border-radius: 40px;
-    border: 2px solid #6B7072;
-    font-size: 24px;
-    box-shadow: 2px 8px rgba(107, 112, 114, 0.5);
-    cursor: pointer;
 }
 .no4 .no4Box button.en {background: #EDAE87;}
 .no4 .no4Box button.cn {background: #F2D98E;}
@@ -130,6 +125,39 @@ a {text-decoration: none;}
     transition: all 5s ease-in-out;
 }
 
+.no5 .no5Box button {
+    margin-top: 24px;
+    margin-left: 24px;
+}
+.no5 .no5Box #txt {
+    margin-left: 0;
+    background: #EDAE87;
+}
+.no5 .no5Box #srt {background: #F2D98E;}
+.no5 .no5Box #csv {background: #A5C2B5;}
+.no6 {
+    width: 350px;
+    height: 560px;
+    position: absolute;
+    top: 230px;
+    right: 12px;
+}
+.no6 .no6Box {
+    margin: 16px 0 0 16px;
+}
+.no6 .no6Box ul {
+    max-height: 540px;
+    overflow: auto;
+}
+.no6 .no6Box ul li {
+    margin-bottom: 28px;
+}
+.no6 .no6Box ul li .timeline {
+    font-size: 20px;
+}
+.no6 .no6Box ul li .subtitle {
+    font-size: 24px;
+}
 .no1, .no2, .no3, .no4, .no5, .no6 {
     display: none;
 }

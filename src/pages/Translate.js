@@ -80,18 +80,19 @@ function Translate() {
               </div>
           }
         </div>
-        <div className={`no1 ${activeStep === 1 ? 'on' : ''}`}>
+        {/* <div className={`no1 ${activeStep === 1 ? 'on' : ''}`}> */}
+        <div className="no1">
           <div className="no1Box">
             <p>원하는 동영상, 음성 파일을 드래그하여 넣으세요!</p>
             <button className="fileSelect" onClick={() => document.querySelector('.uploadBox input').click()}>파일선택</button>
           </div>
         </div>
-        <div className="no2 on">
+        <div className="no2">
           <div className="no2Box">
             <p>뚝딱이가 영상의 자막을<br />생성합니다!</p>
           </div>
         </div>
-        <div className={`no3 ${activeStep === 3 ? 'on' : ''}`}>
+        <div className="no3">
           <div className="no3Box">
             <p>{fileInfo.name}</p>
             <p>{fileInfo.length}</p>
@@ -109,7 +110,7 @@ function Translate() {
             <button className='sp' id='sp'>스페인어</button>
           </div>
         </div>
-        <div className="no5">
+        <div className="no5 on">
           <div className="no5Box">
             <p>다운로드 받을 포멧을 선택해 주세요</p>
             <button className="formetSelet" id='txt'>.txt</button>
@@ -117,9 +118,15 @@ function Translate() {
             <button className="formetSelet" id='csv'>.csv</button>
           </div>
         </div>
-        <div className="no6">
+        <div className="no6 on">
           <div className="no6Box">
-            <p>뚝딱이가 영상의 자막을<br />생성합니다!</p>
+            <ul>
+              <li>
+                <p className='timeline'>0:00</p>
+                <p className="subtitle">Good to see you again, guys!
+                Welcome back to my channel.</p>
+              </li>
+            </ul>
           </div>
         </div>
       </div>
