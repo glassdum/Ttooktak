@@ -5,7 +5,17 @@ import axios from 'axios';
 
 function Translate() {
   const [fileInfo, setFileInfo] = useState({ name: '', length: '', language: '' });
-  const [activeStep, setActiveStep] = useState(1);
+  // const [activeStep, setActiveStep] = useState(1);
+  const [setActiveStep] = useState(1);
+  // const EnButton = document.getElementById("en");
+  // const CnButton = document.getElementById("cn");
+  // const JpButton = document.getElementById("jp");
+  // const RuButton = document.getElementById("ru");
+  // const SpButton = document.getElementById("sp");
+  // const TxtButton = document.getElementById("txt");
+  // const SrcButton = document.getElementById("src");
+  // const CsvButton = document.getElementById("csv");
+  // const TranslateStrat = document.getElementById("uploadButton");
 
   const onDrop = useCallback(acceptedFiles => {
     const file = acceptedFiles[0];
@@ -97,7 +107,7 @@ function Translate() {
             <p>{fileInfo.name}</p>
             <p>{fileInfo.length}</p>
             <p>{fileInfo.language}</p>
-            <button className="uploadButton">번역시작</button>
+            <button className="uploadButton" id='uploadButton'>번역시작</button>
           </div>
         </div>
         <div className="no4">
@@ -135,5 +145,3 @@ function Translate() {
 }
 
 export default Translate
-
-// 임시-파일 업로드

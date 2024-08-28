@@ -122,7 +122,6 @@ a {text-decoration: none;}
 
 .translateBg button:hover {
     box-shadow: inset 1px 8px 1px rgba(107, 112, 114, 0.5);
-    transition: all 5s ease-in-out;
 }
 
 .no5 .no5Box button {
