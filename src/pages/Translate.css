@@ -164,3 +164,16 @@ a {text-decoration: none;}
 .translateBg .on {
     display: block;
 }
+
+
+video {
+    max-width: 950px;
+}
+.videoBox {
+    box-sizing: content-box;
+    padding: 48px;
+    background: #ECF5F5;
+    position: absolute;
+    left: 35px;
+    top: 100px;
+}

@@ -4,9 +4,10 @@ import './Translate.css';
 import axios from 'axios';
 
 function Translate() {
+  const [videoUrl, setVideoUrl] = useState(null);
   const [fileInfo, setFileInfo] = useState({ name: '', length: '', language: '' });
-  // const [activeStep, setActiveStep] = useState(1);
-  const [setActiveStep] = useState(1);
+  const [activeStep, setActiveStep] = useState(1);
+  // const [setActiveStep] = useState(1);
   // const EnButton = document.getElementById("en");
   // const CnButton = document.getElementById("cn");
   // const JpButton = document.getElementById("jp");
@@ -20,6 +21,9 @@ function Translate() {
   const onDrop = useCallback(acceptedFiles => {
     const file = acceptedFiles[0];
     if (file && file.type === 'video/mp4') {
+      const url = URL.createObjectURL(file);
+      setVideoUrl(url);  // 생성된 URL을 상태에 저장
+
       console.log(file);
       // 백엔드가 없으므로, axios를 사용해 모의 응답을 생성합니다.
       axios.post('http://localhost:3000/translate', file).then(response => {
@@ -89,20 +93,27 @@ function Translate() {
                 </svg>
               </div>
           }
+          {videoUrl && (
+            <div className="videoBox">
+              <video src={videoUrl} controls style={{ width: '100%', height: 'auto' }}>
+                Your browser does not support the video tag.
+              </video>
+            </div>
+          )}
         </div>
         {/* <div className={`no1 ${activeStep === 1 ? 'on' : ''}`}> */}
-        <div className="no1">
+        <div className={`no1 ${activeStep === 1 ? 'on' : ''}`}>
           <div className="no1Box">
             <p>원하는 동영상, 음성 파일을 드래그하여 넣으세요!</p>
             <button className="fileSelect" onClick={() => document.querySelector('.uploadBox input').click()}>파일선택</button>
           </div>
         </div>
-        <div className="no2">
+        <div className={`no2 ${activeStep === 1 ? 'on' : ''}`}>
           <div className="no2Box">
             <p>뚝딱이가 영상의 자막을<br />생성합니다!</p>
           </div>
         </div>
-        <div className="no3">
+        <div className={`no3 ${activeStep === 3 ? 'on' : ''}`}>
           <div className="no3Box">
             <p>{fileInfo.name}</p>
             <p>{fileInfo.length}</p>
@@ -110,7 +121,7 @@ function Translate() {
             <button className="uploadButton" id='uploadButton'>번역시작</button>
           </div>
         </div>
-        <div className="no4">
+        <div className={`no4 ${activeStep === 3 ? 'on' : ''}`}>
           <div className="no4Box">
             <p>원하는 언어를<br />선택해 주세요</p>
             <button className='en' id='en'>영어</button>
@@ -120,7 +131,7 @@ function Translate() {
             <button className='sp' id='sp'>스페인어</button>
           </div>
         </div>
-        <div className="no5 on">
+        <div className="no5">
           <div className="no5Box">
             <p>다운로드 받을 포멧을 선택해 주세요</p>
             <button className="formetSelet" id='txt'>.txt</button>
@@ -128,7 +139,7 @@ function Translate() {
             <button className="formetSelet" id='csv'>.csv</button>
           </div>
         </div>
-        <div className="no6 on">
+        <div className="no6">
           <div className="no6Box">
             <ul>
               <li>
