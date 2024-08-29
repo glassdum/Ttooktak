@@ -167,13 +167,24 @@ a {text-decoration: none;}
 
 
 video {
-    max-width: 950px;
+    max-width: 940px;
+    max-height: 480px;
 }
 .videoBox {
-    box-sizing: content-box;
-    padding: 48px;
+    box-sizing: border-box;
+    width: 1093px;
+    height: 614px;
+    display: flex;
+    justify-content: baseline;
+    align-items: baseline;
+    padding: 24px;
     background: #ECF5F5;
     position: absolute;
-    left: 35px;
-    top: 100px;
+    left: 48.5px;
+    top: 125.5px;
+}
+.videoBox .videoLayout {
+    position: absolute;
+    left: 0;
+    top: 0;
 }
