@@ -11,7 +11,9 @@ function indexFile(){
                 </div>
                 <div className="guide001Contents">
                     <h3>뚝딱이는 가장 편리한 번역 도구입니다.</h3>
-                    <button>소개보기</button>
+                    <Link to="/information">
+                        <button>소개보기</button>
+                    </Link>
                 </div>
             </div>
             <div className="guide002">

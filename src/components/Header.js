@@ -29,6 +29,7 @@ function Header(){
             </Link>
             <nav className='mainMenu'>
                 <ul>
+                    <li><Link to="/information">뚝딱이 소개</Link></li>
                     <li><Link to="/translate">번역하기</Link></li>
                     <li><Link to="/edit-profile">정보수정</Link></li>
                 </ul>

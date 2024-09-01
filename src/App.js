@@ -5,7 +5,7 @@ import EditProfile from './pages/EditProfile';
 import LoginPage from './pages/Login';
 import MakingMembership from './pages/MakingMembership';
 import Index from './pages/MainPage';
-// import Board from './pages/Board';
+import Information from './pages/TtooktakInfo';
 import Header from './components/Header';
 import { UserProvider } from './context/context';
 
@@ -17,6 +17,7 @@ function App() {
           <Header></Header>
           <Routes>
             <Route path="/" element={<Navigate to="/index" />} />
+            <Route path="/information" element={<Information />} />
             <Route path="/translate" element={<Translate />} />
             <Route path="/edit-profile" element={<EditProfile />} />
             <Route path='/login' element={<LoginPage />}/>
